@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DawgSharp</name>
+    </assembly>
+    <members>
+        <member name="M:DawgSharp.Dawg`1.MatchPrefix(System.Collections.Generic.IEnumerable{System.Char})">
+            <summary>
+            Returns all items with a given word.
+            </summary>
+        </member>
+        <member name="M:DawgSharp.Dawg`1.GetPrefixes(System.Collections.Generic.IEnumerable{System.Char})">
+            <summary>
+            Returns all items that are substrings of a given word.
+            </summary>
+        </member>
+        <member name="M:DawgSharp.Dawg`1.SaveTo(System.IO.Stream,System.Action{System.IO.BinaryWriter,`0})">
+            <summary>
+            Save the DAWG to a file / stream.
+            </summary>
+            <param name="stream"></param>
+            <param name="writePayload">Optional, can be null for basic types (int, string, etc).</param>
+        </member>
+        <member name="M:DawgSharp.Dawg`1.SaveAsYaleDawg(System.IO.Stream,System.Action{System.IO.BinaryWriter,`0})">
+            <summary>
+            This method is only used for testing.
+            </summary>
+        </member>
+        <member name="M:DawgSharp.Dawg`1.SaveAsMatrixDawg(System.IO.Stream,System.Action{System.IO.BinaryWriter,`0})">
+            <summary>
+            This method is only used for testing.
+            </summary>
+        </member>
+        <member name="M:DawgSharp.DawgBuilder`1.Insert(System.Collections.Generic.IEnumerable{System.Char},`0)">
+            <summary>
+            Inserts a new key/value pair or updates the value for an existing key.
+            </summary>
+        </member>
+        <member name="M:DawgSharp.DawgExtensionsParallel.ToDawgBuilderParallel``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.String},System.Func{``0,``1})">
+            <summary>
+            Adds all the words in the enumerable to a new DawgBuilder.
+            </summary>
+            <remarks>
+            Splits the word list into groups by the first letter of the word
+            and calls <see cref="M:DawgSharp.DawgBuilder`1.Insert(System.Collections.Generic.IEnumerable{System.Char},`0)"/> for each group in parallel.
+            </remarks>
+        </member>
+        <member name="M:DawgSharp.IDawg`1.MatchPrefix(System.Collections.Generic.IEnumerable{System.Char})">
+            <summary>
+            Returns all elements with key matching given <paramref name="prefix"/>.
+            </summary>
+        </member>
+        <member name="M:DawgSharp.MatrixDawg`1.GetPath(System.Collections.Generic.IEnumerable{System.Char})">
+            <summary>
+            Returns a series of node indices 
+            </summary>
+        </member>
+        <member name="M:DawgSharp.MultiDawg`1.MultiwordFind(System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{System.Char}},System.Int32@,System.Char)">
+            <summary>
+            Tries to find as many space-separated words as it can.
+            </summary>
+            <param name="words">The words to find</param>
+            <param name="wordsFound">How many words were actually matched.</param>
+            <param name="separator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DawgSharp.OldDawg`1.MatchPrefix(System.Collections.Generic.IEnumerable{System.Char})">
+            <summary>
+            Returns all elements with key matching given <paramref name="prefix"/>.
+            </summary>
+        </member>
+    </members>
+</doc>

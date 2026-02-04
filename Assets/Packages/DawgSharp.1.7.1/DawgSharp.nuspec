@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>DawgSharp</id>
+    <version>1.7.1</version>
+    <title>An ultra-compact string dictionary</title>
+    <authors>morpher</authors>
+    <license type="expression">GPL-3.0-or-later</license>
+    <licenseUrl>https://licenses.nuget.org/GPL-3.0-or-later</licenseUrl>
+    <icon>icon.png</icon>
+    <projectUrl>https://github.com/bzaar/DawgSharp</projectUrl>
+    <description>DAWG (Directed Acyclic Word Graph) is a data structure for storing and searching large word lists while keeping your memory footprint small and lookups fast. DawgSharp is an open-source C# implementation featuring a linear time graph reduction algorithm and out-of-the-box persistence support.
+      
+      The Dawg class is nearly as fast as a HashSet for lookups and is much, much more memory-efficient (factors of 30x - 40x are not uncommon). In a benchmark application it held two million words while consuming only 2Mbytes of RAM. That's only one byte per word! And it's even less on disk.
+      
+      The Dawg class can be thought of as a read-only Dictionary&lt;string, Value&gt;: it has a ["string"] indexer and implements IEnumerable&lt;KeyValuePair&lt;string, Value&gt;&gt;. One other very useful feature of Dawg (not found in Dictionary) is the ability to quickly find all words that start with a particular prefix: dawg.MatchPrefix("star") could possibly yield "star", "starch", "start", "starting", etc.
+      
+      This package is provided under the terms of the GNU GPL v3. Source code and documentation are available on GitHub: https://github.com/bzaar/DawgSharp. Commercial licenses are also available at http://morpher.co.uk</description>
+    <releaseNotes>Speed up BuildDawg() by 25%. Add ToDawgBuilderParallel() which _may_ be faster for really large word lists.</releaseNotes>
+    <copyright>2014 - 2022 Sergey Slepov</copyright>
+    <tags>DAWG string dictionary lookup</tags>
+    <repository type="git" url="https://github.com/bzaar/DawgSharp" commit="78f5278da22d240f6e4b046ab5c683fe49a9e0ad" />
+    <dependencies>
+      <group targetFramework=".NETFramework3.5" />
+      <group targetFramework=".NETFramework4.0" />
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+</package>
