@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8675786713028512659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4484890264927540555}
+  - component: {fileID: 6162954550252584306}
+  m_Layer: 5
+  m_Name: NotificationColumn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4484890264927540555
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675786713028512659}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -291.13538, y: 495}
+  m_SizeDelta: {x: 582.25073, y: 990}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6162954550252584306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675786713028512659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db1327aeb56f472aa2313fe7b3bebf61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToastsColumnView
+  toastPrefab: {fileID: 7862245425022028706, guid: f7f7207cc3b59a24c86ceb2d2db2c990, type: 3}
+  defaultDuration: 3
+  spacing: 8
+  padding: {x: 16, y: 16}
+  moveLerpFactor: 0.1
+  exitOffset: 32
+  exitDestroyDelay: 0.5

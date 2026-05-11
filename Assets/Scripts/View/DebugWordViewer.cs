@@ -1,28 +1,66 @@
-﻿using TMPro;
+using System.Text;
+using TMPro;
 using UnityEngine;
 
 public class DebugWordViewer : MonoBehaviour
 {
-    public WordDetectorModel wordDetectorModel;
-    public TextMeshPro textMesh;
+    public TMP_Text textMesh;
+    private WordDetectorModel _wordDetectorModel;
 
-    public void Awake()
+    public void OnEnable()
     {
-        wordDetectorModel.DetectedPendingWordsNotifier.CollectionChanged += (_, _) => UpdateWords();
+        MultiplayerGameManager manager = MultiplayerGameManager.Instance;
+        _wordDetectorModel = manager ? manager.wordDetectorModel : null;
+        if (!_wordDetectorModel)
+        {
+            return;
+        }
+
+        _wordDetectorModel.Changed += UpdateWords;
         UpdateWords();
+    }
+
+    public void OnDisable()
+    {
+        if (_wordDetectorModel)
+        {
+            _wordDetectorModel.Changed -= UpdateWords;
+        }
+
+        _wordDetectorModel = null;
     }
 
     public void UpdateWords()
     {
-        var text = "";
-        foreach (var word in wordDetectorModel.DetectedPendingWords)
+        if (!_wordDetectorModel)
         {
-            text += $"'{word.Word}' at {word.Start} towards {word.Direction}\n";
+            return;
         }
-        if (text == "")
+
+        if (_wordDetectorModel.HasDetectedWord)
         {
-            text = "No words detected";
+            StringBuilder text = new();
+            foreach (WordData word in _wordDetectorModel.DetectedWords)
+            {
+                text.AppendLine($"'{word.Word}' ({word.Score}) в {word.Start} по направлению {word.Direction}");
+            }
+
+            text.Append($"Итого: {_wordDetectorModel.TotalDetectedScore}");
+            textMesh.text = text.ToString();
+            return;
         }
-        textMesh.text = text.Trim();
+
+        string errorText = "Слово не найдено";
+        foreach (WordValidationError error in _wordDetectorModel.ValidationErrors)
+        {
+            errorText += $"\n{error}";
+        }
+
+        foreach (string candidate in _wordDetectorModel.CandidateDebugLines)
+        {
+            errorText += $"\n{candidate}";
+        }
+
+        textMesh.text = errorText.Trim();
     }
 }
